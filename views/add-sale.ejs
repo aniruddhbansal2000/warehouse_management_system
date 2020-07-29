@@ -1,0 +1,33 @@
+<!-- include header part -->
+<% include partials/header.ejs %>
+
+
+    
+
+    <div class="container">
+        <% if (message != '') { %>
+        <!-- have a MESSAGE (so displayed , ELSE NOT) -->
+            <p class="text-center text-danger"><%= message %></p>
+        <% } %>
+
+        
+        <form class="add-product-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                
+                <div class="form-group col-md-6">
+                    <input type="number" class="form-control" name="customer_id" id="customer_id" placeholder="Customer ID" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" name="customer_name" id="customer_name" placeholder="Customer Name" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" name="payment_mode" id="payment_mode" placeholder="Payment Mode" required>
+                </div>
+
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Register Sale</button>
+        </form>
+    </div>
+
+</body>
+</html>

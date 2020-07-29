@@ -1,0 +1,54 @@
+
+<% include partials/header.ejs %>  
+<body>
+
+<div class="page-wrapper">
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1"><a href="/sale">Sale orders</a></span>
+        <!-- *** Here need TO ADD LINKS TO PAGES (for different activities) -->
+        <a class="float-right" href="/sale/add" title="Add a New Sale">Add a Sale</a>
+        <!-- <a class="float-right" href="/sale/add/product" title="Add products to Sale">Add Products to Sale</a> -->
+    </nav>
+
+    <div class="table-wrapper">
+        <!-- recieved sales TABLE by routing of home page request -->
+        <% if (sales.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr> 
+                        <!-- headers (for RESPECTIVE col(COLUMNS)) -->
+                        <th scope="col">Bill ID</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Bill Period</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Payment Mode</th>
+ 
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sales.forEach((sale, index) => { %>
+                    <!-- run for each object(named==sale) in sales table-->
+                        <tr>
+                            <!-- DATA ELEMENTS (below header) -->
+                            <th scope="row"><%= sale.sale_id %></th>
+                            <td><%= sale.customer_id %></td>
+                            <td><%= sale.customer_name %></td>
+                            <td><%= sale.bill_period %></td>
+                            <td><%= sale.amount %></td>
+                            <td><%= sale.payment_mode %></td>
+                            <!-- <td>
+                                <a href="/sale/edit/<%= sale.sale_id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                
+                            </td> -->
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No sales found. Go <a href="/sale/add" >here</a> to add sales.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
